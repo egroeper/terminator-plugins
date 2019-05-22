@@ -4,7 +4,7 @@
 """copyall.py - Terminator Plugin to copy the terminal content into clipboard"""
 
 import os
-import gtk
+from gi.repository import Gtk
 import terminatorlib.plugin as plugin
 from terminatorlib.translation import _
 
@@ -20,7 +20,7 @@ class CopyAll(plugin.MenuItem):
 
     def callback(self, menuitems, menu, terminal):
         """Add our menu items to the menu"""
-        item = gtk.MenuItem(_('Copy all to clipboard'))
+        item = Gtk.MenuItem(_('Copy all to clipboard'))
         item.connect("activate", self.copyall, terminal)
         menuitems.append(item)
 
@@ -28,5 +28,5 @@ class CopyAll(plugin.MenuItem):
         """Select all text and copy it to the clipboard"""
 	terminal.vte.select_all()
         terminal.vte.copy_clipboard()
-        terminal.vte.select_none()
+        terminal.vte.unselect_all()
 
