@@ -26,5 +26,5 @@ class SelectAll(plugin.MenuItem):
 
     def selectall(self, _widget, terminal):
         """Select all text """
-	terminal.vte.select_all()
+        terminal.vte.select_all()
 
